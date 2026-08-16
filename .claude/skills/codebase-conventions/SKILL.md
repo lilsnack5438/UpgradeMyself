@@ -14,7 +14,7 @@ description: >-
 
 # Codebase conventions
 
-This app (package `tryhard`, product name "Kiên Trì") went through a full design-system build-out in one long session. The patterns below aren't arbitrary — each one closed a real gap or fixed a real bug found while building the app. Follow them so the codebase keeps reading as one system instead of drifting into several.
+This app (package `challenge`, product name "Challenge") went through a full design-system build-out in one long session. The patterns below aren't arbitrary — each one closed a real gap or fixed a real bug found while building the app. Follow them so the codebase keeps reading as one system instead of drifting into several.
 
 ## Design tokens — `src/constants/theme.ts`
 

@@ -1,6 +1,6 @@
 {
   "common": {
-    "appName": "Kiên Trì"
+    "appName": "Challenge"
   },
   "tabs": {
     "home": "Hôm nay",
@@ -12,7 +12,7 @@
     "english": { "name": "Từ vựng", "unit": "từ mới" }
   },
   "select": {
-    "eyebrow": "KIÊN TRÌ",
+    "eyebrow": "CHALLENGE",
     "title": "Chọn bài tập của bạn",
     "subtitle": "Chọn những bài tập bạn muốn luyện mỗi ngày để nâng cấp bản thân.",
     "goalHint": "Gợi ý: {{goal}} {{unit}}/ngày",

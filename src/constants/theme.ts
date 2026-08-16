@@ -1,7 +1,7 @@
 import { Dimensions, PixelRatio, Platform } from 'react-native';
 
 /**
- * Kiên Trì is a fixed dark-only design — no light variant was ever specified,
+ * Challenge is a fixed dark-only design — no light variant was ever specified,
  * so none is invented here. Values converted from the source design's OKLCH
  * palette through the real OKLab → linear-sRGB → sRGB pipeline.
  */

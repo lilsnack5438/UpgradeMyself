@@ -1,4 +1,4 @@
-# TryHard
+# Challenge
 
 A React Native app built with [Expo](https://expo.dev) SDK 57, [expo-router](https://docs.expo.dev/router/introduction/), and TypeScript.
 

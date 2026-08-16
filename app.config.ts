@@ -2,15 +2,15 @@ import type { ExpoConfig, ConfigContext } from 'expo/config';
 
 export default ({ config }: ConfigContext): ExpoConfig => ({
   ...config,
-  name: 'TryHard',
-  slug: 'tryhard',
+  name: 'Challenge',
+  slug: 'challenge',
   version: '1.0.0',
   orientation: 'portrait',
   icon: './assets/images/icon.png',
-  scheme: 'tryhard',
+  scheme: 'challenge',
   userInterfaceStyle: 'dark',
   ios: {
-    bundleIdentifier: 'com.kiet.ngt.tryhard',
+    bundleIdentifier: 'com.kiet.ngt.challenge',
   },
   android: {
     adaptiveIcon: {
