@@ -1,0 +1,79 @@
+{
+  "common": {
+    "appName": "Kiên Trì"
+  },
+  "tabs": {
+    "home": "Hôm nay",
+    "rewards": "Thành tích"
+  },
+  "exercises": {
+    "pushup": { "name": "Hít đất", "unit": "reps" },
+    "jumprope": { "name": "Nhảy dây", "unit": "nhịp" },
+    "english": { "name": "Từ vựng", "unit": "từ mới" }
+  },
+  "select": {
+    "eyebrow": "KIÊN TRÌ",
+    "title": "Chọn bài tập của bạn",
+    "subtitle": "Chọn những bài tập bạn muốn luyện mỗi ngày để nâng cấp bản thân.",
+    "goalHint": "Gợi ý: {{goal}} {{unit}}/ngày",
+    "continue": "Tiếp tục"
+  },
+  "goals": {
+    "title": "Đặt mục tiêu mỗi ngày",
+    "subtitle": "Mức bạn đặt ở đây là mục tiêu bắt buộc hoàn thành mỗi ngày để giữ chuỗi.",
+    "perDay": "{{unit}}/ngày",
+    "startPlan": "Bắt đầu hành trình",
+    "saveChanges": "Lưu thay đổi"
+  },
+  "home": {
+    "greeting": "Xin chào",
+    "edit": "Chỉnh sửa",
+    "streakLabel": "ngày liên tiếp",
+    "nextMilestone": "Còn {{days}} ngày để đạt \"{{title}}\"",
+    "todayGoals": "Mục tiêu hôm nay",
+    "taskProgress": "{{progress}}/{{goal}} {{unit}}",
+    "done": "Xong",
+    "addStep": "+{{step}}",
+    "allDoneTitle": "Bạn đã hoàn thành mục tiêu hôm nay!",
+    "endDay": "Kết thúc ngày · +1 chuỗi",
+    "skipDay": "Bỏ qua hôm nay",
+    "penaltyActiveMinor": "Hình phạt nhẹ đang áp dụng",
+    "penaltyActiveMax": "Hình phạt nặng đang áp dụng"
+  },
+  "rewards": {
+    "title": "Phần thưởng & Hình phạt",
+    "subtitle": "Chuỗi càng dài, phần thưởng càng lớn — nhưng bỏ lỡ cũng có giá.",
+    "milestonesLabel": "Mốc thưởng",
+    "achieved": "Đã đạt",
+    "remaining": "Còn {{days}} ngày",
+    "penaltiesLabel": "Mức phạt",
+    "active": "Đang áp dụng",
+    "resetAll": "Đặt lại toàn bộ lộ trình"
+  },
+  "milestones": {
+    "3": { "title": "Khởi động", "desc": "Bạn đã bắt đầu hành trình — đừng dừng lại." },
+    "7": { "title": "Kiên trì", "desc": "Một tuần liên tục không bỏ cuộc." },
+    "14": { "title": "Bền bỉ", "desc": "Hai tuần kỷ luật — bạn đang tiến bộ rõ rệt." },
+    "30": { "title": "Kỷ luật thép", "desc": "Một tháng chinh phục mục tiêu mỗi ngày." },
+    "66": {
+      "title": "Thói quen bền vững",
+      "desc": "66 ngày — theo khoa học, đây là lúc thói quen thật sự hình thành."
+    }
+  },
+  "penalties": {
+    "minor": {
+      "level": "Nhẹ",
+      "trigger": "Bỏ lỡ 1 ngày",
+      "effect": "Không mất chuỗi, nhưng ngày tiếp theo phải hoàn thành 150% mục tiêu để bù lại."
+    },
+    "max": {
+      "level": "Nặng",
+      "trigger": "Bỏ lỡ 2 ngày liên tiếp",
+      "effect": "Mất toàn bộ chuỗi hiện tại và phải hoàn thành gấp đôi mục tiêu trong 3 ngày tới."
+    }
+  },
+  "toast": {
+    "missedOneDayTitle": "Bỏ lỡ 1 ngày",
+    "lostStreakTitle": "Mất chuỗi!"
+  }
+}

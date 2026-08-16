@@ -1,65 +1,124 @@
-/**
- * Below are the colors that are used in the app. The colors are defined in the light and dark mode.
- * There are many other ways to style your app. For example, [Nativewind](https://www.nativewind.dev/), [Tamagui](https://tamagui.dev/), [unistyles](https://reactnativeunistyles.vercel.app), etc.
- */
-
-import '@/global.css';
-
 import { Platform } from 'react-native';
 
+/**
+ * Kiên Trì is a fixed dark-only design — no light variant was ever specified,
+ * so none is invented here. Values converted from the source design's OKLCH
+ * palette through the real OKLab → linear-sRGB → sRGB pipeline.
+ */
 export const Colors = {
-  light: {
-    text: '#000000',
-    background: '#ffffff',
-    backgroundElement: '#F0F0F3',
-    backgroundSelected: '#E0E1E6',
-    textSecondary: '#60646C',
-  },
-  dark: {
-    text: '#ffffff',
-    background: '#000000',
-    backgroundElement: '#212225',
-    backgroundSelected: '#2E3135',
-    textSecondary: '#B0B4BA',
-  },
+  background: '#140e0a',
+  surface: '#211914',
+  surfacePressed: '#2e241d',
+  border: 'rgba(255,255,255,0.08)',
+  borderStrong: 'rgba(255,255,255,0.15)',
+  text: '#f7f5f2',
+  textSecondary: '#a8a49e',
+  textMuted: '#6c6863',
+  accent: '#f77f00',
+  accentCyan: '#00c3d1',
+  accentPurple: '#b786ff',
+  success: '#4cc157',
+  successSoft: 'rgba(76,193,87,0.14)',
+  danger: '#e85854',
+  onAccent: '#140e0a',
 } as const;
 
-export type ThemeColor = keyof typeof Colors.light & keyof typeof Colors.dark;
+export type ThemeColor = keyof typeof Colors;
 
-export const Fonts = Platform.select({
-  ios: {
-    /** iOS `UIFontDescriptorSystemDesignDefault` */
-    sans: 'system-ui',
-    /** iOS `UIFontDescriptorSystemDesignSerif` */
-    serif: 'ui-serif',
-    /** iOS `UIFontDescriptorSystemDesignRounded` */
-    rounded: 'ui-rounded',
-    /** iOS `UIFontDescriptorSystemDesignMonospaced` */
-    mono: 'ui-monospace',
-  },
-  default: {
-    sans: 'normal',
-    serif: 'serif',
-    rounded: 'normal',
-    mono: 'monospace',
-  },
-  web: {
-    sans: 'var(--font-display)',
-    serif: 'var(--font-serif)',
-    rounded: 'var(--font-rounded)',
-    mono: 'var(--font-mono)',
-  },
-});
+export const Fonts = {
+  displayExtraBold: 'Manrope_800ExtraBold',
+  displayBold: 'Manrope_700Bold',
+  body: Platform.select({ ios: 'system-ui', android: 'sans-serif', default: 'system-ui' }),
+  mono: Platform.select({ ios: 'ui-monospace', android: 'monospace', default: 'monospace' }),
+} as const;
 
 export const Spacing = {
-  half: 2,
-  one: 4,
-  two: 8,
-  three: 16,
-  four: 24,
-  five: 32,
-  six: 64,
+  xxs: 4,
+  xs: 6,
+  sm: 8,
+  smd: 10,
+  md: 12,
+  base: 14,
+  lg: 16,
+  xl: 20,
+  xxl: 24,
+  xxxl: 32,
 } as const;
 
+export const Radii = {
+  xs: 4,
+  sm: 10,
+  md: 14,
+  lg: 18,
+  xl: 24,
+  full: 999,
+} as const;
+
+export const Typography = {
+  eyebrow: {
+    fontFamily: Fonts.displayBold,
+    fontSize: 12,
+    lineHeight: 16,
+    letterSpacing: 1.4,
+    textTransform: 'uppercase',
+  },
+  sectionLabel: {
+    fontFamily: Fonts.displayBold,
+    fontSize: 12,
+    lineHeight: 16,
+    letterSpacing: 1,
+    textTransform: 'uppercase',
+  },
+  display: {
+    fontFamily: Fonts.displayExtraBold,
+    fontSize: 27,
+    lineHeight: 34,
+  },
+  heading: {
+    fontFamily: Fonts.displayExtraBold,
+    fontSize: 24,
+    lineHeight: 30,
+  },
+  statLarge: {
+    fontFamily: Fonts.displayExtraBold,
+    fontSize: 26,
+    lineHeight: 30,
+  },
+  body: {
+    fontFamily: Fonts.body,
+    fontSize: 14.5,
+    lineHeight: 22,
+  },
+  bodyStrong: {
+    fontFamily: Fonts.body,
+    fontSize: 16,
+    lineHeight: 22,
+    fontWeight: '600',
+  },
+  caption: {
+    fontFamily: Fonts.body,
+    fontSize: 12.5,
+    lineHeight: 18,
+  },
+  captionSmall: {
+    fontFamily: Fonts.body,
+    fontSize: 12,
+    lineHeight: 16,
+  },
+  label: {
+    fontFamily: Fonts.body,
+    fontSize: 13.5,
+    lineHeight: 18,
+    fontWeight: '700',
+  },
+  button: {
+    fontFamily: Fonts.displayExtraBold,
+    fontSize: 15,
+    lineHeight: 20,
+  },
+} as const;
+
+export type TypographyVariant = keyof typeof Typography;
+
 export const BottomTabInset = Platform.select({ ios: 50, android: 80 }) ?? 0;
-export const MaxContentWidth = 800;
+export const MaxContentWidth = 480;
