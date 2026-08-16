@@ -1,4 +1,4 @@
-import { Platform } from 'react-native';
+import { Dimensions, PixelRatio, Platform } from 'react-native';
 
 /**
  * Kiên Trì is a fixed dark-only design — no light variant was ever specified,
@@ -32,89 +32,122 @@ export const Fonts = {
   mono: Platform.select({ ios: 'ui-monospace', android: 'monospace', default: 'monospace' }),
 } as const;
 
+/**
+ * Responsive scaling (react-native-size-matters approach), measured once
+ * against the design reference device (iPhone 14/15-class, 390×844 pt).
+ * Static by design — matches the underlying library's own behavior and
+ * avoids turning every token into a hook just to react to app.json's
+ * portrait-locked orientation, which never changes post-launch anyway.
+ */
+const REFERENCE_WIDTH = 390;
+const REFERENCE_HEIGHT = 844;
+
+const { width: windowWidth, height: windowHeight } = Dimensions.get('window');
+const [shortDimension, longDimension] =
+  windowWidth < windowHeight ? [windowWidth, windowHeight] : [windowHeight, windowWidth];
+
+export function scale(size: number): number {
+  return (shortDimension / REFERENCE_WIDTH) * size;
+}
+
+export function verticalScale(size: number): number {
+  return (longDimension / REFERENCE_HEIGHT) * size;
+}
+
+/**
+ * Scales `size` toward its device-scaled value by `factor` (0 = no scaling,
+ * 1 = full scale). Default 0.5 keeps spacing/type from swinging as wildly
+ * as raw `scale()` would between a compact phone and a large tablet.
+ */
+export function moderateScale(size: number, factor = 0.5): number {
+  return PixelRatio.roundToNearestPixel(size + (scale(size) - size) * factor);
+}
+
 export const Spacing = {
-  xxs: 4,
-  xs: 6,
-  sm: 8,
-  smd: 10,
-  md: 12,
-  base: 14,
-  lg: 16,
-  xl: 20,
-  xxl: 24,
-  xxxl: 32,
+  xxs: moderateScale(4),
+  xs: moderateScale(6),
+  sm: moderateScale(8),
+  smd: moderateScale(10),
+  md: moderateScale(12),
+  base: moderateScale(14),
+  lg: moderateScale(16),
+  xl: moderateScale(20),
+  xxl: moderateScale(24),
+  xxxl: moderateScale(32),
 } as const;
 
 export const Radii = {
-  xs: 4,
-  sm: 10,
-  md: 14,
-  lg: 18,
-  xl: 24,
+  xs: moderateScale(4),
+  sm: moderateScale(10),
+  md: moderateScale(14),
+  lg: moderateScale(18),
+  xl: moderateScale(24),
+  // Intentionally unscaled — a pill/circle radius just needs to exceed half
+  // the element's largest dimension, scaling it further changes nothing.
   full: 999,
 } as const;
 
 export const Typography = {
   eyebrow: {
     fontFamily: Fonts.displayBold,
-    fontSize: 12,
-    lineHeight: 16,
+    fontSize: moderateScale(12),
+    lineHeight: moderateScale(16),
     letterSpacing: 1.4,
     textTransform: 'uppercase',
   },
   sectionLabel: {
     fontFamily: Fonts.displayBold,
-    fontSize: 12,
-    lineHeight: 16,
+    fontSize: moderateScale(12),
+    lineHeight: moderateScale(16),
     letterSpacing: 1,
     textTransform: 'uppercase',
   },
   display: {
     fontFamily: Fonts.displayExtraBold,
-    fontSize: 27,
-    lineHeight: 34,
+    fontSize: moderateScale(27),
+    lineHeight: moderateScale(34),
   },
   heading: {
     fontFamily: Fonts.displayExtraBold,
-    fontSize: 24,
-    lineHeight: 30,
+    fontSize: moderateScale(24),
+    lineHeight: moderateScale(30),
   },
   statLarge: {
     fontFamily: Fonts.displayExtraBold,
-    fontSize: 26,
-    lineHeight: 30,
+    fontSize: moderateScale(26),
+    lineHeight: moderateScale(30),
   },
   body: {
     fontFamily: Fonts.body,
-    fontSize: 14.5,
-    lineHeight: 22,
+    fontSize: moderateScale(14.5),
+    lineHeight: moderateScale(22),
   },
   bodyStrong: {
     fontFamily: Fonts.body,
-    fontSize: 16,
-    lineHeight: 22,
+    fontSize: moderateScale(16),
+    lineHeight: moderateScale(22),
     fontWeight: '600',
   },
   caption: {
     fontFamily: Fonts.body,
-    fontSize: 12.5,
-    lineHeight: 18,
+    fontSize: moderateScale(12.5),
+    lineHeight: moderateScale(18),
   },
   captionSmall: {
     fontFamily: Fonts.body,
-    fontSize: 12,
-    lineHeight: 16,
+    fontSize: moderateScale(12),
+    lineHeight: moderateScale(16),
   },
   label: {
     fontFamily: Fonts.body,
-    fontSize: 13.5,
-    lineHeight: 18,
+    fontSize: moderateScale(13.5),
+    lineHeight: moderateScale(18),
     fontWeight: '700',
   },
   button: {
     fontFamily: Fonts.displayExtraBold,
-    fontSize: 15,
-    lineHeight: 20,
+    fontSize: moderateScale(15),
+    lineHeight: moderateScale(20),
   },
 } as const;
 

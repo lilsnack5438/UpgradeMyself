@@ -1,12 +1,12 @@
 import { router } from 'expo-router';
 import { useTranslation } from 'react-i18next';
 
-import { GoalsEditor } from '@/features/kien-tri/components/goals-editor';
-import { useKienTri } from '@/features/kien-tri/state/kien-tri-provider';
+import { GoalsEditor } from '@/features/challenge/components/goals-editor';
+import { useChallenge } from '@/features/challenge/state/challenge-provider';
 
 export default function OnboardingGoalsScreen() {
   const { t } = useTranslation();
-  const { startPlan } = useKienTri();
+  const { startPlan } = useChallenge();
 
   return (
     <GoalsEditor

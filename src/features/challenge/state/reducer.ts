@@ -1,6 +1,6 @@
 import { EXERCISES, type ExerciseId } from '../constants/exercises';
 import { REWARD_MILESTONES } from '../constants/milestones';
-import type { HistoryEntry, KienTriState, PersistedState } from './types';
+import type { HistoryEntry, ChallengeState, PersistedState } from './types';
 
 const HISTORY_LIMIT = 10;
 
@@ -22,7 +22,7 @@ function resetProgress(ids: ExerciseId[]): Partial<Record<ExerciseId, number>> {
   return progress;
 }
 
-export const initialState: KienTriState = {
+export const initialState: ChallengeState = {
   hasOnboarded: false,
   selectedIds: [],
   goals: defaultGoals(),
@@ -45,7 +45,7 @@ export type Action =
   | { type: 'DISMISS_TOAST' }
   | { type: 'RESET_ALL' };
 
-export function kienTriReducer(state: KienTriState, action: Action): KienTriState {
+export function challengeReducer(state: ChallengeState, action: Action): ChallengeState {
   switch (action.type) {
     case 'HYDRATE':
       return { ...state, ...action.state };

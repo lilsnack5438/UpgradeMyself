@@ -1,11 +1,11 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import { initialState } from './reducer';
-import type { KienTriState, PersistedState } from './types';
+import type { ChallengeState, PersistedState } from './types';
 
-const STORAGE_KEY = '@kien-tri/state/v1';
+const STORAGE_KEY = '@challenge/state/v1';
 
-function toPersisted(state: KienTriState): PersistedState {
+function toPersisted(state: ChallengeState): PersistedState {
   const {
     hasOnboarded,
     selectedIds,
@@ -53,7 +53,7 @@ export async function loadState(): Promise<PersistedState> {
   }
 }
 
-export async function saveState(state: KienTriState): Promise<void> {
+export async function saveState(state: ChallengeState): Promise<void> {
   try {
     await AsyncStorage.setItem(STORAGE_KEY, JSON.stringify(toPersisted(state)));
   } catch {

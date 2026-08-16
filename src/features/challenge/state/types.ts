@@ -14,7 +14,7 @@ export interface HistoryEntry {
 export type ToastState =
   { type: 'reward'; milestoneDays: MilestoneDays } | { type: 'penalty'; tier: PenaltyTierId };
 
-export interface KienTriState {
+export interface ChallengeState {
   hasOnboarded: boolean;
   selectedIds: ExerciseId[];
   goals: Record<ExerciseId, number>;
@@ -26,4 +26,4 @@ export interface KienTriState {
   toast: ToastState | null;
 }
 
-export type PersistedState = Omit<KienTriState, 'toast'>;
+export type PersistedState = Omit<ChallengeState, 'toast'>;

@@ -6,19 +6,19 @@ import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context'
 import { ThemedText } from '@/components/themed-text';
 import { ThemedView } from '@/components/themed-view';
 import { Spacing } from '@/constants/theme';
-import { AllDoneBanner } from '@/features/kien-tri/components/all-done-banner';
-import { PenaltyBanner } from '@/features/kien-tri/components/penalty-banner';
-import { SectionLabel } from '@/features/kien-tri/components/section-label';
-import { StreakCard } from '@/features/kien-tri/components/streak-card';
-import { Toast } from '@/features/kien-tri/components/toast';
-import { TodayTaskRow } from '@/features/kien-tri/components/today-task-row';
-import { EXERCISES } from '@/features/kien-tri/constants/exercises';
-import { REWARD_MILESTONES } from '@/features/kien-tri/constants/milestones';
-import { useKienTri } from '@/features/kien-tri/state/kien-tri-provider';
+import { AllDoneBanner } from '@/features/challenge/components/all-done-banner';
+import { PenaltyBanner } from '@/features/challenge/components/penalty-banner';
+import { SectionLabel } from '@/features/challenge/components/section-label';
+import { StreakCard } from '@/features/challenge/components/streak-card';
+import { Toast } from '@/features/challenge/components/toast';
+import { TodayTaskRow } from '@/features/challenge/components/today-task-row';
+import { EXERCISES } from '@/features/challenge/constants/exercises';
+import { REWARD_MILESTONES } from '@/features/challenge/constants/milestones';
+import { useChallenge } from '@/features/challenge/state/challenge-provider';
 
 export default function HomeScreen() {
   const { t } = useTranslation();
-  const { state, addProgress, endDay, skipDay, dismissToast } = useKienTri();
+  const { state, addProgress, endDay, skipDay, dismissToast } = useChallenge();
   const insets = useSafeAreaInsets();
 
   const selectedExercises = EXERCISES.filter((ex) => state.selectedIds.includes(ex.id));

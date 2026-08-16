@@ -8,7 +8,7 @@ import { useEffect } from 'react';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
 import { Colors } from '@/constants/theme';
-import { KienTriProvider, useKienTri } from '@/features/kien-tri/state/kien-tri-provider';
+import { ChallengeProvider, useChallenge } from '@/features/challenge/state/challenge-provider';
 import { queryClient } from '@/lib/query-client';
 
 SplashScreen.preventAutoHideAsync();
@@ -37,18 +37,18 @@ export default function RootLayout() {
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
       <QueryClientProvider client={queryClient}>
-        <KienTriProvider>
+        <ChallengeProvider>
           <ThemeProvider value={navigationTheme}>
             <AppReady />
           </ThemeProvider>
-        </KienTriProvider>
+        </ChallengeProvider>
       </QueryClientProvider>
     </GestureHandlerRootView>
   );
 }
 
 function AppReady() {
-  const { state, isHydrated } = useKienTri();
+  const { state, isHydrated } = useChallenge();
 
   useEffect(() => {
     if (isHydrated) {

@@ -2,11 +2,11 @@ import { createContext, useContext, useEffect, useReducer, useState, type ReactN
 
 import type { ExerciseId } from '../constants/exercises';
 import { loadState, saveState } from './persistence';
-import { initialState, kienTriReducer } from './reducer';
-import type { KienTriState } from './types';
+import { initialState, challengeReducer } from './reducer';
+import type { ChallengeState } from './types';
 
-interface KienTriContextValue {
-  state: KienTriState;
+interface ChallengeContextValue {
+  state: ChallengeState;
   isHydrated: boolean;
   toggleSelect: (id: ExerciseId) => void;
   adjustGoal: (id: ExerciseId, delta: number) => void;
@@ -18,10 +18,10 @@ interface KienTriContextValue {
   resetAll: () => void;
 }
 
-const KienTriContext = createContext<KienTriContextValue | null>(null);
+const ChallengeContext = createContext<ChallengeContextValue | null>(null);
 
-export function KienTriProvider({ children }: { children: ReactNode }) {
-  const [state, dispatch] = useReducer(kienTriReducer, initialState);
+export function ChallengeProvider({ children }: { children: ReactNode }) {
+  const [state, dispatch] = useReducer(challengeReducer, initialState);
   const [isHydrated, setIsHydrated] = useState(false);
 
   useEffect(() => {
@@ -41,7 +41,7 @@ export function KienTriProvider({ children }: { children: ReactNode }) {
     saveState(state);
   }, [state, isHydrated]);
 
-  const value: KienTriContextValue = {
+  const value: ChallengeContextValue = {
     state,
     isHydrated,
     toggleSelect: (id) => dispatch({ type: 'TOGGLE_SELECT', id }),
@@ -54,11 +54,11 @@ export function KienTriProvider({ children }: { children: ReactNode }) {
     resetAll: () => dispatch({ type: 'RESET_ALL' }),
   };
 
-  return <KienTriContext.Provider value={value}>{children}</KienTriContext.Provider>;
+  return <ChallengeContext.Provider value={value}>{children}</ChallengeContext.Provider>;
 }
 
-export function useKienTri() {
-  const ctx = useContext(KienTriContext);
-  if (!ctx) throw new Error('useKienTri must be used within a KienTriProvider');
+export function useChallenge() {
+  const ctx = useContext(ChallengeContext);
+  if (!ctx) throw new Error('useChallenge must be used within a ChallengeProvider');
   return ctx;
 }

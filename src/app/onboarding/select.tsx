@@ -5,15 +5,15 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { ThemedView } from '@/components/themed-view';
 import { Spacing } from '@/constants/theme';
-import { EXERCISES } from '@/features/kien-tri/constants/exercises';
-import { ExerciseSelectRow } from '@/features/kien-tri/components/exercise-select-row';
-import { PrimaryButton } from '@/features/kien-tri/components/primary-button';
-import { ScreenHeader } from '@/features/kien-tri/components/screen-header';
-import { useKienTri } from '@/features/kien-tri/state/kien-tri-provider';
+import { EXERCISES } from '@/features/challenge/constants/exercises';
+import { ExerciseSelectRow } from '@/features/challenge/components/exercise-select-row';
+import { PrimaryButton } from '@/features/challenge/components/primary-button';
+import { ScreenHeader } from '@/features/challenge/components/screen-header';
+import { useChallenge } from '@/features/challenge/state/challenge-provider';
 
 export default function SelectScreen() {
   const { t } = useTranslation();
-  const { state, toggleSelect } = useKienTri();
+  const { state, toggleSelect } = useChallenge();
 
   return (
     <ThemedView style={styles.container}>

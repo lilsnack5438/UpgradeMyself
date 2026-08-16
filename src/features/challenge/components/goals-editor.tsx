@@ -7,7 +7,7 @@ import { ThemedText } from '@/components/themed-text';
 import { ThemedView } from '@/components/themed-view';
 import { Colors, Radii, Spacing } from '@/constants/theme';
 import { EXERCISES } from '../constants/exercises';
-import { useKienTri } from '../state/kien-tri-provider';
+import { useChallenge } from '../state/challenge-provider';
 import { GoalStepperCard } from './goal-stepper-card';
 import { PrimaryButton } from './primary-button';
 
@@ -18,7 +18,7 @@ interface GoalsEditorProps {
 
 export function GoalsEditor({ submitLabel, onSubmit }: GoalsEditorProps) {
   const { t } = useTranslation();
-  const { state, adjustGoal } = useKienTri();
+  const { state, adjustGoal } = useChallenge();
   const selectedExercises = EXERCISES.filter((ex) => state.selectedIds.includes(ex.id));
 
   return (

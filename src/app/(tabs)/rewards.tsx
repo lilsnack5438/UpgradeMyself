@@ -5,16 +5,16 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { ThemedText } from '@/components/themed-text';
 import { ThemedView } from '@/components/themed-view';
 import { Colors, Radii, Spacing } from '@/constants/theme';
-import { PenaltyTierCard } from '@/features/kien-tri/components/penalty-tier-card';
-import { RewardMilestoneRow } from '@/features/kien-tri/components/reward-milestone-row';
-import { SectionLabel } from '@/features/kien-tri/components/section-label';
-import { PENALTY_TIERS } from '@/features/kien-tri/constants/penalty-tiers';
-import { REWARD_MILESTONES } from '@/features/kien-tri/constants/milestones';
-import { useKienTri } from '@/features/kien-tri/state/kien-tri-provider';
+import { PenaltyTierCard } from '@/features/challenge/components/penalty-tier-card';
+import { RewardMilestoneRow } from '@/features/challenge/components/reward-milestone-row';
+import { SectionLabel } from '@/features/challenge/components/section-label';
+import { PENALTY_TIERS } from '@/features/challenge/constants/penalty-tiers';
+import { REWARD_MILESTONES } from '@/features/challenge/constants/milestones';
+import { useChallenge } from '@/features/challenge/state/challenge-provider';
 
 export default function RewardsScreen() {
   const { t } = useTranslation();
-  const { state, resetAll } = useKienTri();
+  const { state, resetAll } = useChallenge();
 
   return (
     <ThemedView style={styles.container}>
