@@ -35,7 +35,7 @@ export default function HomeScreen() {
         <ThemedView style={styles.heroSection}>
           <AnimatedIcon />
           <ThemedText type="title" style={styles.title}>
-            Welcome to&nbsp;Expo
+            Welcome to&nbsp;TryHard
           </ThemedText>
         </ThemedView>
 
@@ -51,7 +51,7 @@ export default function HomeScreen() {
           <HintRow title="Dev tools" hint={getDevMenuHint()} />
           <HintRow
             title="Fresh start"
-            hint={<ThemedText type="code">npm run reset-project</ThemedText>}
+            hint={<ThemedText type="code">bun run reset-project</ThemedText>}
           />
         </ThemedView>
 
