@@ -18,7 +18,7 @@ This app (package `tryhard`, product name "Kiên Trì") went through a full desi
 
 ## Design tokens — `src/constants/theme.ts`
 
-This file is the *only* source of truth for color, type, spacing, and radius. Never inline a hex color, a raw `fontSize`, a spacing/margin/padding number, or a `borderRadius` number in a component — import the token instead.
+This file is the _only_ source of truth for color, type, spacing, and radius. Never inline a hex color, a raw `fontSize`, a spacing/margin/padding number, or a `borderRadius` number in a component — import the token instead.
 
 ```tsx
 // ❌ don't
@@ -93,7 +93,7 @@ Any layout using `expo-router/unstable-native-tabs` (native-only) needs a `_layo
 
 All user-facing copy lives in `src/i18n/locales/vi.json`, namespaced by screen or domain (`select.title`, `home.greeting`, …). Pull it in with `useTranslation()` + `t('namespace.key')` — never hardcode a string directly in JSX.
 
-When a key has to be built from a data id — `t(\`exercises.${id}.name\`)` — the id's TypeScript type must be a literal union (`'pushup' | 'jumprope' | 'english'`), not a generic `string`. The strict i18next typing (`src/types/i18next.d.ts`) checks the interpolated template literal against real keys in `vi.json`; a widened `string` type defeats that check and TypeScript will reject the call. This is also just a correctness improvement in its own right — a closed set of ids should be a union, not `string`.
+When a key has to be built from a data id — `t(\`exercises.${id}.name\`)` — the id's TypeScript type must be a literal union (`'pushup' | 'jumprope' | 'english'`), not a generic `string`. The strict i18next typing (`src/types/i18next.d.ts`) checks the interpolated template literal against real keys in `vi.json`; a widened type defeats that check and TypeScript will reject the call. This is also just a correctness improvement in its own right — a closed set of ids should always be a literal union, never a plain string.
 
 Only register locales that actually have authored content in `src/i18n/index.ts` — don't invent an `en` translation nobody asked for. Keep the `resources` map shaped so adding one later is a one-line change.
 
