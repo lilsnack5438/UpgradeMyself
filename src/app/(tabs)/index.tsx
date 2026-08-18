@@ -8,6 +8,7 @@ import { ThemedView } from '@/components/themed-view';
 import { Spacing } from '@/constants/theme';
 import { AllDoneBanner } from '@/features/challenge/components/all-done-banner';
 import { PenaltyBanner } from '@/features/challenge/components/penalty-banner';
+import { QuizTaskRow } from '@/features/challenge/components/quiz-task-row';
 import { SectionLabel } from '@/features/challenge/components/section-label';
 import { StreakCard } from '@/features/challenge/components/streak-card';
 import { Toast } from '@/features/challenge/components/toast';
@@ -51,15 +52,25 @@ export default function HomeScreen() {
           <View style={styles.tasksSection}>
             <SectionLabel>{t('home.todayGoals')}</SectionLabel>
             <View style={styles.taskList}>
-              {selectedExercises.map((exercise) => (
-                <TodayTaskRow
-                  key={exercise.id}
-                  exercise={exercise}
-                  progress={state.progress[exercise.id] ?? 0}
-                  goal={state.goals[exercise.id] ?? exercise.defaultGoal}
-                  onAdd={() => addProgress(exercise.id)}
-                />
-              ))}
+              {selectedExercises.map((exercise) =>
+                exercise.kind === 'quiz' ? (
+                  <QuizTaskRow
+                    key={exercise.id}
+                    exercise={exercise}
+                    progress={state.progress[exercise.id] ?? 0}
+                    goal={state.goals[exercise.id] ?? exercise.defaultGoal}
+                    onStart={() => router.push(`/vocab-quiz?exerciseId=${exercise.id}`)}
+                  />
+                ) : (
+                  <TodayTaskRow
+                    key={exercise.id}
+                    exercise={exercise}
+                    progress={state.progress[exercise.id] ?? 0}
+                    goal={state.goals[exercise.id] ?? exercise.defaultGoal}
+                    onAdd={() => addProgress(exercise.id)}
+                  />
+                ),
+              )}
             </View>
           </View>
 

@@ -65,10 +65,12 @@ function AppReady() {
       <Stack.Protected guard={!state.hasOnboarded}>
         <Stack.Screen name="onboarding/select" />
         <Stack.Screen name="onboarding/goals" />
+        <Stack.Screen name="onboarding/notifications" />
       </Stack.Protected>
       <Stack.Protected guard={state.hasOnboarded}>
         <Stack.Screen name="(tabs)" />
         <Stack.Screen name="edit-goals" options={{ presentation: 'modal' }} />
+        <Stack.Screen name="vocab-quiz" options={{ presentation: 'fullScreenModal' }} />
       </Stack.Protected>
     </Stack>
   );

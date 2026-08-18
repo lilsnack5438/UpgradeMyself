@@ -35,6 +35,15 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
       },
     ],
     'expo-localization',
+    [
+      'expo-notifications',
+      {
+        // Duplicated from Colors.accent in src/constants/theme.ts — this file
+        // runs in Node at build time and can't import theme.ts (it pulls in
+        // react-native). Keep these two values in sync by hand.
+        color: '#f77f00',
+      },
+    ],
   ],
   experiments: {
     typedRoutes: true,

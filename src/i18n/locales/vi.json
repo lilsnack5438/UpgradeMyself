@@ -9,7 +9,7 @@
   "exercises": {
     "pushup": { "name": "Hít đất", "unit": "reps" },
     "jumprope": { "name": "Nhảy dây", "unit": "nhịp" },
-    "english": { "name": "Từ vựng", "unit": "từ mới" }
+    "english": { "name": "Từ vựng", "unit": "câu hỏi" }
   },
   "select": {
     "eyebrow": "CHALLENGE",
@@ -25,6 +25,15 @@
     "startPlan": "Bắt đầu hành trình",
     "saveChanges": "Lưu thay đổi"
   },
+  "onboarding": {
+    "notifications": {
+      "badge": "TB",
+      "title": "Đừng bỏ lỡ chuỗi ngày",
+      "body": "Nhận nhắc nhở vào buổi sáng và buổi tối để hoàn thành mục tiêu và giữ chuỗi không bị đứt.",
+      "enable": "Bật thông báo",
+      "skip": "Có thể để sau"
+    }
+  },
   "home": {
     "greeting": "Xin chào",
     "edit": "Chỉnh sửa",
@@ -34,6 +43,8 @@
     "taskProgress": "{{progress}}/{{goal}} {{unit}}",
     "done": "Xong",
     "addStep": "+{{step}}",
+    "startQuiz": "Bắt đầu",
+    "continueQuiz": "Tiếp tục",
     "allDoneTitle": "Bạn đã hoàn thành mục tiêu hôm nay!",
     "endDay": "Kết thúc ngày · +1 chuỗi",
     "skipDay": "Bỏ qua hôm nay",
@@ -48,6 +59,10 @@
     "remaining": "Còn {{days}} ngày",
     "penaltiesLabel": "Mức phạt",
     "active": "Đang áp dụng",
+    "notificationsLabel": "Thông báo",
+    "dailyReminders": "Nhắc nhở hằng ngày",
+    "notifEnabled": "Đã bật",
+    "enableNotifs": "Bật",
     "resetAll": "Đặt lại toàn bộ lộ trình"
   },
   "milestones": {
@@ -75,5 +90,37 @@
   "toast": {
     "missedOneDayTitle": "Bỏ lỡ 1 ngày",
     "lostStreakTitle": "Mất chuỗi!"
+  },
+  "notifications": {
+    "channelName": "Nhắc nhở hằng ngày",
+    "morningLabel": "Buổi sáng · 8:00",
+    "morningTitle": "Đừng bỏ lỡ chuỗi ngày",
+    "morningBody": "Bắt đầu ngày mới với mục tiêu của bạn — đừng để chuỗi đứt gãy.",
+    "eveningLabel": "Buổi tối · 20:00",
+    "eveningTitle": "Đừng bỏ lỡ chuỗi ngày",
+    "eveningBody": "Còn kịp! Hoàn thành mục tiêu hôm nay trước khi ngày kết thúc."
+  },
+  "vocabQuiz": {
+    "instruction": "Dịch từ này sang tiếng Việt",
+    "generating": "Đang tạo câu hỏi từ AI...",
+    "answerPlaceholder": "Nhập nghĩa tiếng Việt...",
+    "submit": "Kiểm tra",
+    "grading": "Đang chấm điểm câu trả lời...",
+    "correct": "Chính xác!",
+    "incorrect": "Chưa đúng",
+    "wordLabel": "Từ:",
+    "correctMeaningLabel": "Nghĩa đúng:",
+    "nextQuestion": "Câu tiếp theo",
+    "seeResults": "Xem kết quả",
+    "progressLabel": "Câu {{current}}/{{total}}",
+    "correctAnswersLabel": "câu trả lời đúng",
+    "finish": "Hoàn thành",
+    "exitConfirmTitle": "Rời khỏi bài kiểm tra?",
+    "exitConfirmBody": "Tiến độ của phiên này sẽ không được lưu lại.",
+    "exitConfirmStay": "Tiếp tục làm bài",
+    "exitConfirmLeave": "Rời khỏi",
+    "errorTitle": "Có lỗi xảy ra",
+    "errorBody": "Không thể kết nối. Vui lòng kiểm tra mạng và thử lại.",
+    "retry": "Thử lại"
   }
 }

@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { ThemedText } from '@/components/themed-text';
 import { ThemedView } from '@/components/themed-view';
 import { Colors, Radii, Spacing } from '@/constants/theme';
+import { AiBadge } from './ai-badge';
 import { IconBadge } from './icon-badge';
 
 import type { Exercise } from '../constants/exercises';
@@ -23,7 +24,10 @@ export function ExerciseSelectRow({ exercise, selected, onToggle }: ExerciseSele
       <ThemedView type="surface" style={styles.row}>
         <IconBadge label={exercise.mono} color={exercise.accent} size="lg" />
         <View style={styles.textColumn}>
-          <ThemedText type="bodyStrong">{t(`exercises.${exercise.id}.name`)}</ThemedText>
+          <View style={styles.nameRow}>
+            <ThemedText type="bodyStrong">{t(`exercises.${exercise.id}.name`)}</ThemedText>
+            {exercise.kind === 'quiz' ? <AiBadge /> : null}
+          </View>
           <ThemedText type="caption" themeColor="textMuted" style={styles.hint}>
             {t('select.goalHint', { goal: exercise.defaultGoal, unit })}
           </ThemedText>
@@ -57,6 +61,11 @@ const styles = StyleSheet.create({
   textColumn: {
     flex: 1,
     minWidth: 0,
+  },
+  nameRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: Spacing.xs,
   },
   hint: {
     marginTop: 2,

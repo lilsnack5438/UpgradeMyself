@@ -1,20 +1,37 @@
+import { useEffect, useState } from 'react';
 import { Pressable, ScrollView, StyleSheet, View } from 'react-native';
 import { useTranslation } from 'react-i18next';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import * as Notifications from 'expo-notifications';
 
 import { ThemedText } from '@/components/themed-text';
 import { ThemedView } from '@/components/themed-view';
 import { Colors, Radii, Spacing } from '@/constants/theme';
+import { NotificationSettingsCard } from '@/features/challenge/components/notification-settings-card';
 import { PenaltyTierCard } from '@/features/challenge/components/penalty-tier-card';
 import { RewardMilestoneRow } from '@/features/challenge/components/reward-milestone-row';
 import { SectionLabel } from '@/features/challenge/components/section-label';
 import { PENALTY_TIERS } from '@/features/challenge/constants/penalty-tiers';
 import { REWARD_MILESTONES } from '@/features/challenge/constants/milestones';
 import { useChallenge } from '@/features/challenge/state/challenge-provider';
+import { ensureDailyReminders, requestNotificationPermission } from '@/lib/notifications';
 
 export default function RewardsScreen() {
   const { t } = useTranslation();
   const { state, resetAll } = useChallenge();
+  const [notificationsEnabled, setNotificationsEnabled] = useState(false);
+
+  useEffect(() => {
+    Notifications.getPermissionsAsync().then((result) => setNotificationsEnabled(result.granted));
+  }, []);
+
+  const handleEnableNotifications = async () => {
+    const granted = await requestNotificationPermission();
+    if (granted) {
+      await ensureDailyReminders();
+    }
+    setNotificationsEnabled(granted);
+  };
 
   return (
     <ThemedView style={styles.container}>
@@ -47,6 +64,14 @@ export default function RewardsScreen() {
                 <PenaltyTierCard key={tier.id} tier={tier} activeTier={state.penalty} />
               ))}
             </View>
+          </View>
+
+          <View style={styles.section}>
+            <SectionLabel>{t('rewards.notificationsLabel')}</SectionLabel>
+            <NotificationSettingsCard
+              enabled={notificationsEnabled}
+              onEnable={handleEnableNotifications}
+            />
           </View>
 
           <Pressable onPress={resetAll} style={styles.resetLink}>
