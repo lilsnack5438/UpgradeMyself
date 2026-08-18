@@ -155,5 +155,12 @@ export const Typography = {
 
 export type TypographyVariant = keyof typeof Typography;
 
-export const BottomTabInset = Platform.select({ ios: 50, android: 80 }) ?? 0;
+/**
+ * The native tab bar's own content height (NativeTabs, Apple HIG / Material
+ * spec) — NOT the device safe-area inset. NativeTabs' automatic content-inset
+ * adjustment (unstable-native-tabs) doesn't reliably clear scrollable content
+ * in practice, so tab screens add this manually: `insets.bottom +
+ * BottomTabInset` as a scroll view's bottom padding.
+ */
+export const BottomTabInset = Platform.select({ ios: 49, android: 80 }) ?? 0;
 export const MaxContentWidth = 480;

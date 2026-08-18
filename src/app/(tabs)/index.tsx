@@ -5,7 +5,7 @@ import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context'
 
 import { ThemedText } from '@/components/themed-text';
 import { ThemedView } from '@/components/themed-view';
-import { Spacing } from '@/constants/theme';
+import { BottomTabInset, Spacing } from '@/constants/theme';
 import { AllDoneBanner } from '@/features/challenge/components/all-done-banner';
 import { PenaltyBanner } from '@/features/challenge/components/penalty-banner';
 import { QuizTaskRow } from '@/features/challenge/components/quiz-task-row';
@@ -31,7 +31,13 @@ export default function HomeScreen() {
   return (
     <ThemedView style={styles.container}>
       <SafeAreaView style={styles.safeArea} edges={['top', 'left', 'right']}>
-        <ScrollView contentContainerStyle={styles.content} showsVerticalScrollIndicator={false}>
+        <ScrollView
+          contentContainerStyle={[
+            styles.content,
+            { paddingBottom: insets.bottom + BottomTabInset + Spacing.xl },
+          ]}
+          showsVerticalScrollIndicator={false}
+        >
           <View style={styles.headerRow}>
             <ThemedText type="heading">{t('home.greeting')}</ThemedText>
             <Pressable onPress={() => router.push('/edit-goals')}>

@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react';
 import { Pressable, ScrollView, StyleSheet, View } from 'react-native';
 import { useTranslation } from 'react-i18next';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
 import * as Notifications from 'expo-notifications';
 
 import { ThemedText } from '@/components/themed-text';
 import { ThemedView } from '@/components/themed-view';
-import { Colors, Radii, Spacing } from '@/constants/theme';
+import { BottomTabInset, Colors, Radii, Spacing } from '@/constants/theme';
 import { NotificationSettingsCard } from '@/features/challenge/components/notification-settings-card';
 import { PenaltyTierCard } from '@/features/challenge/components/penalty-tier-card';
 import { RewardMilestoneRow } from '@/features/challenge/components/reward-milestone-row';
@@ -20,6 +20,7 @@ export default function RewardsScreen() {
   const { t } = useTranslation();
   const { state, resetAll } = useChallenge();
   const [notificationsEnabled, setNotificationsEnabled] = useState(false);
+  const insets = useSafeAreaInsets();
 
   useEffect(() => {
     Notifications.getPermissionsAsync().then((result) => setNotificationsEnabled(result.granted));
@@ -36,7 +37,13 @@ export default function RewardsScreen() {
   return (
     <ThemedView style={styles.container}>
       <SafeAreaView style={styles.safeArea} edges={['top', 'left', 'right']}>
-        <ScrollView contentContainerStyle={styles.content} showsVerticalScrollIndicator={false}>
+        <ScrollView
+          contentContainerStyle={[
+            styles.content,
+            { paddingBottom: insets.bottom + BottomTabInset + Spacing.xl },
+          ]}
+          showsVerticalScrollIndicator={false}
+        >
           <ThemedView style={styles.header}>
             <ThemedText type="heading">{t('rewards.title')}</ThemedText>
             <ThemedText type="body" themeColor="textSecondary">
